@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sou_Pian</title>
+    <style type="text/css">
+        td {
+            text-align:center; /*设置水平居bai中*/
+            vertical-align:middle;/*设置垂直居中*/
+        }
+    </style>
+</head>
+<body>
+<div>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="text" name="keyword" placeholder="描述一下这部片">
+        <button type="submit">上传你的片，独乐乐不如众乐乐</button>
+    </form>
+    <table>
+        <tr th:each="film,status: ${filmlist}">
+            <td th:text="${status.index+1}"></td>
+            <!--
+            <td><img th:src="'photo/'+${film.fid}+'.png'" height="200" width="200"/></td>
+            -->
+            <td><a th:href="'/film/'+${film.keyword}+'.mp4'" th:text="${film.keyword}"></a></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
